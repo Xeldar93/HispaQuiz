@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HispaQuiz</title>
+    <link rel="stylesheet" href="../styles/indexStyle.css">
+</head>
+<body>
+
+     <!-- Pantalla para crear un nuevo quiz -->
+<section id="create-quiz">
+    <h2>Crear un Nuevo Quiz</h2>
+    <form id="quiz-form">
+        <label for="quiz-title">Título del Quiz:</label>
+        <input type="text" id="quiz-title" required>
+
+        <label for="num-questions">Número de Preguntas:</label>
+        <input type="number" id="num-questions" min="1" max="20" required>
+
+        <label for="has-timer">¿Incluir temporizador?</label>
+        <input type="checkbox" id="has-timer">
+
+        <div id="timer-container" style="display: none;">
+            <label for="timer-minutes">Minutos de cuenta atrás:</label>
+            <input type="number" id="timer-minutes" min="1">
+        </div>
+
+        <div id="questions-container"></div>
+
+        <button type="button" id="guardarQuiz">Guardar Quiz</button>
+    </form>
+    <button id="backButton">Volver</button>
+</section>
+
+<script src="../scripts/crearQuizScript.js"></script>
+</body>
+</html>
