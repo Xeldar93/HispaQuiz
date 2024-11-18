@@ -16,8 +16,11 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Recuperar los datos del quiz seleccionado desde localStorage
     const selectedQuiz = JSON.parse(localStorage.getItem('selectedQuiz'));
+    const token = localStorage.getItem('token');
 
     let currentQuestionIndex = 0;
+    let startTime;
+    let changes = 0;
 
     if (selectedQuiz) {
         // Mostrar el título del quiz
@@ -40,6 +43,8 @@ document.addEventListener('DOMContentLoaded', function() {
             `;
             questionContainer.appendChild(nextButton);
             nextButton.style.display = 'none';
+            startTime = new Date().getTime();
+            changes = 0;
         }
 
         // Mostrar la primera pregunta
@@ -49,11 +54,37 @@ document.addEventListener('DOMContentLoaded', function() {
         questionContainer.addEventListener('change', function(event) {
             if (event.target.name === `question-${currentQuestionIndex}`) {
                 nextButton.style.display = 'block';
+                changes++;
             }
         });
 
         // Manejar el clic en el botón "Siguiente"
         nextButton.addEventListener('click', function() {
+            const endTime = new Date().getTime();
+            const timeTaken = (endTime - startTime) / 1000;
+
+            const metric = {
+                questionId: selectedQuiz.questions[currentQuestionIndex].id,
+                timeTaken,
+                changes
+            };
+
+            fetch('/guardarMetricas', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'x-access-token': token
+                },
+                body: JSON.stringify({ quizId: selectedQuiz.id, metrics: [metric] })
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log('Métricas guardadas:', data);
+            })
+            .catch(error => {
+                console.error('Error al guardar las métricas:', error);
+            });
+
             currentQuestionIndex++;
             if (currentQuestionIndex < selectedQuiz.questions.length) {
                 mostrarPregunta(currentQuestionIndex);

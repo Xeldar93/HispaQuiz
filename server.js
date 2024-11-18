@@ -23,11 +23,11 @@ const secretKey = 'your_secret_key';
 
 // Ruta para registrar un nuevo usuario
 app.post('/register', (req, res) => {
-    const { username, email, password } = req.body;
+    const { username, email, password, nombre, apellidos, edad, team } = req.body;
     const hashedPassword = bcrypt.hashSync(password, 10);
 
-    const query = 'INSERT INTO users (username, email, password) VALUES (?, ?, ?)';
-    connection.query(query, [username, email, hashedPassword], (error, results) => {
+    const query = 'INSERT INTO users (username, email, password, nombre, apellidos, edad, team) VALUES (?, ?, ?, ?, ?, ?, ?)';
+    connection.query(query, [username, email, hashedPassword, nombre, apellidos, edad, team], (error, results) => {
         if (error) {
             return res.status(500).send(error);
         }
@@ -96,6 +96,22 @@ app.get('/obtenerQuizzes', verifyToken, (req, res) => {
         }
         res.send(results);
     });
+});
+
+// Ruta para guardar las métricas del quiz
+app.post('/guardarMetricas', verifyToken, (req, res) => {
+    const { quizId, metrics } = req.body;
+
+    metrics.forEach(metric => {
+        const query = 'INSERT INTO metrics (quizId, userId, questionId, timeTaken, changes) VALUES (?, ?, ?, ?, ?)';
+        connection.query(query, [quizId, req.userId, metric.questionId, metric.timeTaken, metric.changes], (error, results) => {
+            if (error) {
+                return res.status(500).send(error);
+            }
+        });
+    });
+
+    res.send({ message: 'Métricas guardadas exitosamente' });
 });
 
 app.listen(3000, () => {
