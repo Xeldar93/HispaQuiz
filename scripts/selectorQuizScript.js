@@ -8,20 +8,30 @@ document.getElementById('backButton').addEventListener('click', function() {
 
 document.addEventListener('DOMContentLoaded', function() {
     const listaQuizItems = document.getElementById('listaQuizItems');
+    const token = localStorage.getItem('token');
 
-    // Funcion para obtener los quizzes desde el servidor
-    function obtenerQuizzes() {
-        fetch('/obtenerQuizzes')
-            .then(response => response.json())
-            .then(quizzes => {
-                mostrarQuizzes(quizzes);
-            })
-            .catch(error => {
-                console.error('Error al obtener los quizzes:', error);
-            });
+    if (!token) {
+        window.location.href = 'login.html';
+        return;
     }
 
-    // Funcion para mostrar los quizzes en la lista
+    // Función para obtener los quizzes desde el servidor
+    function obtenerQuizzes() {
+        fetch('/obtenerQuizzes', {
+            headers: {
+                'x-access-token': token
+            }
+        })
+        .then(response => response.json())
+        .then(quizzes => {
+            mostrarQuizzes(quizzes);
+        })
+        .catch(error => {
+            console.error('Error al obtener los quizzes:', error);
+        });
+    }
+
+    // Función para mostrar los quizzes en la lista
     function mostrarQuizzes(quizzes) {
         quizzes.forEach(quiz => {
             const li = document.createElement('li');
@@ -34,6 +44,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Obtener los quizzes al cargar la pagina
+    // Obtener los quizzes al cargar la página
     obtenerQuizzes();
 });
