@@ -1,21 +1,98 @@
+body {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  font-family: Arial, sans-serif;
+  position: relative;
+  overflow: hidden;
+}
+
+body::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #2e2e2e 0%, #6e6e6e 50%, #2e2e2e 100%); /* Capa inferior: gris oscuro */
+  z-index: -2;
+}
+
+body::after {
+  content: '';
+  position: absolute;
+  top: 5%;
+  left: 5%;
+  width: 90%;
+  height: 90%;
+  background: linear-gradient(135deg, #15641d 0%, #072c0c 50%, #815e11 100%); /* Capa superior */
+  z-index: -1;
+  border-radius: 10px; /* Opcional: para redondear los bordes de la capa superior */
+}
+
 .container {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 100vh;
-  width: 100vw;
+  height: 90%; /* Ajustar la altura para que coincida con la capa superior */
+  width: 90%; /* Ajustar el ancho para que coincida con la capa superior */
+  position: absolute;
+  top: 5%;
+  left: 5%;
 }
 
-.starButton {
-  background-color: #4CAF50;
+.logo {
+  width: 80vw; /* Ajustar el tamaño del logo para que sea relativo al ancho de la pantalla */
+  height: 80vw; /* Ajustar el tamaño del logo para que sea relativo al ancho de la pantalla */
+  max-width: 50vh; /* Limitar el tamaño máximo del logo */
+  max-height: 50vh; /* Limitar el tamaño máximo del logo */
+  border-radius: 50%;
+  opacity: 0;
+  animation: fadeIn 4s forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+#startButton {
+  background: linear-gradient(335deg, #15641d 0%, #072c0c 50%, #815e11 100%);
   border: none;
-  color: white;
+  color: sandybrown;
   padding: 15px 32px;
   text-align: center;
-  text-decoration: none;
+  text-decoration: 1px, burlywood;
   display: inline-block;
-  font-size: 16px;
-  margin: 4px 2px;
+  font-size: 30px;
+  margin: 20px 2px;
   cursor: pointer;
+  border-radius: 8px;
+  transition: transform 0.5s;
+  font-family: 'Roboto', sans-serif;
+  font-weight: bold;
+}
+
+#startButton:hover {
+  animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
 }

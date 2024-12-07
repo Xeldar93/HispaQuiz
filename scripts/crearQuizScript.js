@@ -7,6 +7,12 @@ document.getElementById('backButton').addEventListener('click', function() {
 });
 
 document.addEventListener('DOMContentLoaded', function() {
+    const audio = document.getElementById('backgroundAudio');
+    audio.volume = 0.5; // Volumen más bajo para el resto del juego
+    audio.play();
+});
+
+document.addEventListener('DOMContentLoaded', function() {
     const hasTimerCheckbox = document.getElementById('has-timer');
     const timerContainer = document.getElementById('timer-container');
     const numQuestionsInput = document.getElementById('num-questions');

@@ -1,0 +1,115 @@
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    font-family: Arial, sans-serif;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #2e2e2e 0%, #6e6e6e 50%, #2e2e2e 100%); /* Capa inferior: gris oscuro */
+    z-index: -2;
+  }
+  
+  body::after {
+    content: '';
+    position: absolute;
+    top: 5%;
+    left: 5%;
+    width: 90%;
+    height: 90%;
+    background: linear-gradient(135deg, #15641d 0%, #072c0c 50%, #815e11 100%); /* Capa superior */
+    z-index: -1;
+    border-radius: 10px; /* Opcional: para redondear los bordes de la capa superior */
+  }
+  
+  .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 90%; /* Ajustar la altura para que coincida con la capa superior */
+    width: 90%; /* Ajustar el ancho para que coincida con la capa superior */
+    position: absolute;
+    top: 5%;
+    left: 5%;
+  }
+  
+  h2 {
+    color: sandybrown; /* Asegurar que el texto sea visible */
+    text-align: center;
+    margin: 0 10px 20px 10px; /* Añadir margen inferior para separación */
+  }
+  
+  p {
+    color: sandybrown; /* Asegurar que el texto sea visible */
+    text-align: center;
+    margin: 0 10px; /* Añadir margen para evitar que el texto sobresalga */
+  }
+  
+  #login {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+    padding: 20px; /* Añadir padding para evitar que el contenido sobresalga */
+    box-sizing: border-box; /* Incluir padding en el tamaño total del elemento */
+  }
+  
+  #login-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+  
+  #login-form label, #login-form input {
+    width: 100%;
+    max-width: 300px;
+    margin: 5px 0; /* Añadir margen para separación */
+  }
+  
+  #loginButton {
+    background: linear-gradient(335deg, #15641d 0%, #072c0c 50%, #815e11 100%);
+    border: none;
+    color: sandybrown; /* Hacer el texto visible */
+    padding: 10px 20px; /* Ajustar el padding para que los botones no sean demasiado grandes */
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px; /* Ajustar el tamaño del texto */
+    margin: 10px 0; /* Ajustar el margen para evitar que los botones sobresalgan */
+    cursor: pointer;
+    border-radius: 8px;
+    transition: transform 0.5s;
+    font-family: 'Roboto', sans-serif;
+    font-weight: bold;
+  }
+  
+  #loginButton:hover {
+    animation: pulse 1s infinite;
+  }
+  
+  @keyframes pulse {
+    0% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.1);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }

@@ -6,6 +6,12 @@ document.getElementById('backButton').addEventListener('click', function() {
     console.log('Botón de volver a Inicio presionado');
 });
 
+document.addEventListener('DOMContentLoaded', function() {
+    const audio = document.getElementById('backgroundAudio');
+    audio.volume = 0.5; // Volumen más bajo para el resto del juego
+    audio.play();
+});
+
 document.getElementById('registerButton').addEventListener('click', function() {
     const username = document.getElementById('username').value;
     const email = document.getElementById('email').value;

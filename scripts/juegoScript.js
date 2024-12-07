@@ -7,6 +7,12 @@ document.getElementById('backButton').addEventListener('click', function() {
 });
 
 document.addEventListener('DOMContentLoaded', function() {
+    const audio = document.getElementById('backgroundAudio');
+    audio.volume = 0.5; // Volumen más bajo para el resto del juego
+    audio.play();
+});
+
+document.addEventListener('DOMContentLoaded', function() {
     const quizTitleDisplay = document.getElementById('quiz-title-display');
     const questionContainer = document.getElementById('question-container');
     const nextButton = document.createElement('button');
