@@ -2,18 +2,31 @@
 
 document.addEventListener('DOMContentLoaded', function() {
     const audio = document.getElementById('backgroundAudio');
+    const audioControlButton = document.getElementById('audioControlButton');
+    const audioControlIcon = document.getElementById('audioControlIcon');
+
     audio.volume = 0.5; // Volumen más bajo para el resto del juego
-    audio.play();
-});
+    audio.play().catch(error => {
+        console.error('Error al reproducir el audio:', error);
+    });
 
-document.getElementById('jugarQuizButton').addEventListener('click', function() {
-    // Lógica para el botón de jugarQuiz
-    window.location.href = 'selectorQuiz.html';
-    console.log('Botón de Jugar Quiz presionado');
-});
+    audioControlButton.addEventListener('click', function() {
+        if (audio.paused) {
+            audio.play().catch(error => {
+                console.error('Error al reproducir el audio:', error);
+            });
+            audioControlIcon.textContent = 'volume_up';
+        } else {
+            audio.pause();
+            audioControlIcon.textContent = 'volume_off';
+        }
+    });
 
-document.getElementById('crearQuizButton').addEventListener('click', function() {
-    // Lógica para el botón de crearQuiz
-    window.location.href = 'crearQuiz.html';
-    console.log('Botón de Crear Quiz presionado');
+    document.getElementById('jugarQuizButton').addEventListener('click', function() {
+        window.location.href = 'juego.html';
+    });
+
+    document.getElementById('crearQuizButton').addEventListener('click', function() {
+        window.location.href = 'crearQuiz.html';
+    });
 });

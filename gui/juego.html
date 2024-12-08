@@ -5,15 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HispaQuiz</title>
     <link rel="stylesheet" href="../styles/indexStyle.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 <body>
-    <audio id="backgroundAudio" src="assets/audio/africa_jungledrums.mp3" loop></audio>
+    <audio id="backgroundAudio" src="../assets/audio/africa_jungledrums.mp3" loop></audio>
     <!-- Pantalla para jugar un quiz -->
     <section id="play-quiz">
         <h2 id="quiz-title-display"></h2>
         <div id="question-container"></div>
         <button id="backButton">Volver</button>
     </section>
+    <button id="audioControlButton" class="audio-control">
+        <span class="material-icons" id="audioControlIcon">volume_up</span>
+    </button>
 
     <script src="../scripts/juegoScript.js"></script>
 </body>

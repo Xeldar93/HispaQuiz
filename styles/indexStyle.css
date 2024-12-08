@@ -96,3 +96,20 @@ body::after {
     transform: scale(1);
   }
 }
+
+.audio-control {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  background: rgba(0, 0, 0, 0.5);
+  border: none;
+  color: white;
+  padding: 10px;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.audio-control .material-icons {
+  font-size: 24px;
+}

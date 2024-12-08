@@ -5,16 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HispaQuiz</title>
     <link rel="stylesheet" href="../styles/pantallaInicioStyle.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 <body>
     <!-- Pantalla de inicio -->
-    <audio id="backgroundAudio" src="assets/audio/africa_jungledrums.mp3" loop></audio>
+    <audio id="backgroundAudio" src="../assets/audio/africa_jungledrums.mp3" loop></audio>
     <section id="start-screen">
         <h1>HispaQuiz</h1>
         <p>Bienvenido a HispaQuiz, la plataforma de quizzes en español.</p>
         <button id="jugarQuizButton">Jugar Quiz</button>
         <button id="crearQuizButton">Crear Quiz</button>
     </section>
+    <button id="audioControlButton" class="audio-control">
+        <span class="material-icons" id="audioControlIcon">volume_up</span>
+    </button>
 
     <script src="../scripts/pantallaInicioScript.js"></script>
 </body>
