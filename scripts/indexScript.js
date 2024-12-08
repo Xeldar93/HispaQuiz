@@ -1,5 +1,4 @@
 // indexScript.js
-
 document.addEventListener('DOMContentLoaded', function() {
     const audio = document.getElementById('backgroundAudio');
     const startButton = document.getElementById('startButton');
@@ -19,17 +18,5 @@ document.addEventListener('DOMContentLoaded', function() {
             window.location.href = 'gui/login.html';
         }
         console.log('Botón de inicio presionado');
-    });
-
-    audioControlButton.addEventListener('click', function() {
-        if (audio.paused) {
-            audio.play().catch(error => {
-                console.error('Error al reproducir el audio:', error);
-            });
-            audioControlIcon.textContent = 'volume_up';
-        } else {
-            audio.pause();
-            audioControlIcon.textContent = 'volume_off';
-        }
     });
 });

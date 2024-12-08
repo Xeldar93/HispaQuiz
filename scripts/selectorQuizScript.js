@@ -7,28 +7,6 @@ document.getElementById('backButton').addEventListener('click', function() {
 });
 
 document.addEventListener('DOMContentLoaded', function() {
-    const audio = document.getElementById('backgroundAudio');
-    const audioControlButton = document.getElementById('audioControlButton');
-    const audioControlIcon = document.getElementById('audioControlIcon');
-
-    audio.volume = 0.5; // Volumen más bajo para el resto del juego
-    audio.play().catch(error => {
-        console.error('Error al reproducir el audio:', error);
-    });
-
-    audioControlButton.addEventListener('click', function() {
-        if (audio.paused) {
-            audio.play().catch(error => {
-                console.error('Error al reproducir el audio:', error);
-            });
-            audioControlIcon.textContent = 'volume_up';
-        } else {
-            audio.pause();
-            audioControlIcon.textContent = 'volume_off';
-        }
-    });
-
-document.addEventListener('DOMContentLoaded', function() {
     const listaQuizItems = document.getElementById('listaQuizItems');
     const token = localStorage.getItem('token');
 
@@ -68,5 +46,4 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Obtener los quizzes al cargar la página
     obtenerQuizzes();
-});
 });
